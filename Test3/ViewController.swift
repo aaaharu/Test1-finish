@@ -9,6 +9,8 @@ import UIKit
 
 
 
+
+
 class ViewController: UIViewController {
 
     
@@ -46,12 +48,25 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setupUI()
-        
+        editDisableed()
+
         
         
     }
 
+    
+    func editDisableed() {
+        nameTF.isUserInteractionEnabled = false
+        profileTF.isUserInteractionEnabled = false
+        introTF.isUserInteractionEnabled = false
+        webTF.isUserInteractionEnabled = false
+        webTF2.isUserInteractionEnabled = false
+        webTF3.isUserInteractionEnabled = false
+    }
 
+
+    
+    
     
 
 }

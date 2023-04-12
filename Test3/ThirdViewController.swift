@@ -69,6 +69,8 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     }
     
 
+    
+
     @IBAction func finishButtonTapped(_ sender: UIButton) {
         // 두 번째 뷰 컨트롤러의 텍스트 필드에서 입력된 데이터 가져오기
         let nameText = nameTF.text
@@ -122,6 +124,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func delButtonTapped(_ sender: UIButton) {
+        webTF2.text = ""
         webView2.isHidden = true
         webTF2.isHidden = true
         trashButton1.isHidden = true
@@ -130,6 +133,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     
 
     @IBAction func delButtonTapped2(_ sender: UIButton) {
+        webTF3.text = ""
         webView3.isHidden = true
         webTF3.isHidden = true
         trashButton2.isHidden = true
