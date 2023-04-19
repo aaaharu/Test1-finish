@@ -652,9 +652,6 @@
                                                 </constraints>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                                <connections>
-                                                    <action selector="finishButtonTapped:" destination="b8o-PN-LXe" eventType="touchUpInside" id="6KR-bY-HUv"/>
-                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="daq-Hs-B89" userLabel="trashButton1">
                                                 <rect key="frame" x="335.66666666666669" y="600" width="40" height="40"/>

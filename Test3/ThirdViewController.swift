@@ -5,9 +5,14 @@
 //  Created by 김은지 on 2023/04/12.
 //
 
-//test
+
 
 import UIKit
+
+extension Notification.Name {
+//    사용자 입력 이벤트
+    static let sendInputEvent = Notification.Name("sendInputEvent")
+}
 
 class ThirdViewController: UIViewController, UITextFieldDelegate {
     
@@ -44,58 +49,41 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var trashButton1: UIButton!
     @IBOutlet weak var trashButton2: UIButton!
     
-    var nameText = ""
-    var profileText = ""
-    var introText = ""
-    var webText = ""
- 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        var delegate: ViewDelegate?
-//        delegate?.dismissVC()
         
         
         setupUI()
         delegateTF()
         countLabel()
         
-        nameTF.text = nameText
-        profileTF.text = profileText
-        introTF.text = introText
-        webTF.text = webText
         
         hiddenItem()
-        
+        finishButton.addTarget(self, action: #selector(sendNotification(_:)), for: .touchUpInside)
     }
     
-
-    
-
-    @IBAction func finishButtonTapped(_ sender: UIButton) {
-        // 두 번째 뷰 컨트롤러의 텍스트 필드에서 입력된 데이터 가져오기
-        let nameText = nameTF.text
-        let profileText = profileTF.text
-        let introText = introTF.text
-        let webText = webTF.text
-        let webText2 = webTF2.text
-        let webText3 = webTF3.text
+//    노티피케이션을 보낸다
+    @objc fileprivate func sendNotification(_ sender: UIButton) {
         
-        
-        // 첫 번째 뷰 컨트롤러의 텍스트 필드에 데이터 전달
-        let firstVC = presentingViewController as? ViewController
-        firstVC?.nameTF.text = nameText
-        firstVC?.profileTF.text = profileText
-        firstVC?.introTF.text = introText
-        firstVC?.webTF.text = webText
-        firstVC?.webTF2.text = webText2
-        firstVC?.webTF3.text = webText3
+            guard let name = nameTF.text,
+                  let profile = profileTF.text,
+                  let intro = introTF.text,
+                  let web = webTF.text,
+                  let web2 = webTF2.text,
+                  let web3 = webTF3.text else { return }
+            
+            let dataToSend = ["name": name, "profile":profile, "intro": intro, "web": web, "web2": web2, "web3": web3]
+            
+            
+            // 이벤트 보내기
+            NotificationCenter.default.post(name: .sendInputEvent, object: self,
+                                            userInfo: dataToSend)
+            
+            dismiss(animated: true, completion: nil)
+        }
 
-        // 현재 뷰 컨트롤러 닫기
-        dismiss(animated: true, completion: nil)
-    }
-    
     
    
     
@@ -124,6 +112,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         warningLabel.isHidden = true
     
     }
+    
     
     @IBAction func delButtonTapped(_ sender: UIButton) {
         webTF2.text = ""
