@@ -164,10 +164,10 @@ class SecondViewController: UIViewController, UITextFieldDelegate, ViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if segue.identifier == "goToSend" {
                let vc = segue.destination as! ThirdViewController
-               vc.nameText = self.nameTF.text ?? ""
-               vc.profileText = self.profileTF.text ?? ""
-               vc.introText = self.introTF.text ?? ""
-               vc.webText = self.webTF.text ?? ""
+//               vc.nameText = self.nameTF.text ?? ""
+//               vc.profileText = self.profileTF.text ?? ""
+//               vc.introText = self.introTF.text ?? ""
+//               vc.webText = self.webTF.text ?? ""
                
            }
        }

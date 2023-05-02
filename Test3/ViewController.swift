@@ -50,8 +50,33 @@ class ViewController: UIViewController {
         setupUI()
         editDisableed()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(_:)), name: .sendInputEvent, object: nil)
         
+    }
+    
+    
+    @objc fileprivate func handleNotification(_ sender: Notification) {
         
+        guard let userInfo = sender.userInfo as? [String: String] else { return }
+
+        if let name = userInfo["name"] {
+            nameTF.text = name
+        }
+        if let profile = userInfo["profile"] {
+            profileTF.text = profile
+        }
+        if let intro = userInfo["intro"] {
+            introTF.text = intro
+        }
+        if let web = userInfo["web"] {
+            webTF.text = web
+        }
+        if let web2 = userInfo["web2"] {
+            webTF2.text = web2
+        }
+        if let web3 = userInfo["web3"] {
+            webTF3.text = web3
+        }
     }
 
     
